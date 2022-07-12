@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @font-face {
   font-family: "Inter";
   src: url("../fonts/Inter-Regular.woff2") format("woff2"),
@@ -39,12 +46,19 @@ html {
 }
 
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   height: 100%;
   margin: 0;
@@ -68,6 +82,7 @@ body {
   border: 0;
   padding: 0;
   white-space: nowrap;
+  -webkit-clip-path: inset(100%);
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
@@ -75,12 +90,21 @@ body {
 
 /* Intro */
 .intro-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .intro-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 570px;
   border-radius: 20px;
@@ -92,6 +116,8 @@ body {
 }
 
 .intro-main-inner {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
   padding: 55px 60px 203px;
 }
@@ -171,8 +197,15 @@ body {
 }
 
 .site-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
 }
 
@@ -194,12 +227,12 @@ body {
 }
 
 .invalid-text {
-  display: none;
   margin-top: 4px;
   font-size: 11px;
   line-height: 13px;
   text-align: right;
   color: #f03535;
+  opacity: 0;
 }
 
 .form-input:focus {
@@ -211,6 +244,38 @@ body {
   margin-top: 35px;
 }
 
+.form-input::-webkit-input-placeholder {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #555555;
+}
+
+.form-input::-moz-placeholder {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #555555;
+}
+
+.form-input:-ms-input-placeholder {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #555555;
+}
+
+.form-input::-ms-input-placeholder {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #555555;
+}
+
 .form-input::placeholder {
   display: inline-block;
   font-weight: 400;
@@ -219,13 +284,31 @@ body {
   color: #555555;
 }
 
+.form-input:not(:-moz-placeholder-shown):not(:focus):invalid {
+  color: #f03535;
+  border-bottom-color: #f03535;
+}
+
+.form-input:not(:-ms-input-placeholder):not(:focus):invalid {
+  color: #f03535;
+  border-bottom-color: #f03535;
+}
+
 .form-input:not(:placeholder-shown):not(:focus):invalid {
   color: #f03535;
   border-bottom-color: #f03535;
 }
 
+.form-input:not(:-moz-placeholder-shown):not(:focus):invalid + .invalid-text {
+  opacity: 1;
+}
+
+.form-input:not(:-ms-input-placeholder):not(:focus):invalid + .invalid-text {
+  opacity: 1;
+}
+
 .form-input:not(:placeholder-shown):not(:focus):invalid + .invalid-text {
-  display: block;
+  opacity: 1;
 }
 
 .primary-btn {
