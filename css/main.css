@@ -77,17 +77,22 @@ body {
 .intro-inner {
   display: flex;
   justify-content: space-between;
-  height: 640px;
 }
 
 .intro-main {
+  display: flex;
+  flex-direction: column;
   width: 570px;
   border-radius: 20px;
   overflow: hidden;
   background-image: url("../images/main-bg.jpg");
+  background-size: 570px 690px;
+  background-repeat: no-repeat;
+  background-position: top left;
 }
 
 .intro-main-inner {
+  flex-grow: 1;
   padding: 55px 60px 203px;
 }
 
@@ -169,7 +174,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 63px;
+}
+
+.form-label {
+  width: 100%;
+  text-align: right;
 }
 
 .form-input {
@@ -177,22 +186,29 @@ body {
   padding-bottom: 14px;
   border: none;
   border-bottom: 1px solid #555555;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  border-color: #555;
+  color: #000000;
+}
+
+.invalid-text {
+  display: none;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+  color: #f03535;
 }
 
 .form-input:focus {
   outline: none;
+  border-bottom-color: #000;
 }
 
-.form-input:first-child::placeholder {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  border-color: #000000;
-  color: #000000;
-}
-
-.form-input:not(:last-child) {
-  margin-bottom: 35px;
+.form-label:not(:first-child) {
+  margin-top: 35px;
 }
 
 .form-input::placeholder {
@@ -203,8 +219,18 @@ body {
   color: #555555;
 }
 
+.form-input:not(:placeholder-shown):not(:focus):invalid {
+  color: #f03535;
+  border-bottom-color: #f03535;
+}
+
+.form-input:not(:placeholder-shown):not(:focus):invalid + .invalid-text {
+  display: block;
+}
+
 .primary-btn {
   width: 100%;
+  margin-top: 63px;
   margin-bottom: 8px;
   padding: 20px;
   font-weight: 600;
